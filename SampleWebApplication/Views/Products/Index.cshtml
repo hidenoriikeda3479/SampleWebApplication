@@ -1,0 +1,51 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h2>Product List</h2>
+
+<!-- 検索フォーム -->
+<!-- asp-action="Search" で ProductsController の Search アクションを指定しています -->
+<form asp-action="Search" method="get">
+    <p>
+        <!-- 商品名の入力欄 -->
+        商品名: <input type="text" name="productName" />
+        <!-- 検索ボタン -->
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<!-- 商品リストを表示するテーブル -->
+<table class="table">
+    <thead>
+        <tr>
+            <!-- テーブルのヘッダー部分 -->
+            <th>
+                <!-- 商品の名前列のヘッダー -->
+                @Html.DisplayNameFor(model => model.First().Name)
+            </th>
+            <th>
+                <!-- 商品の価格列のヘッダー -->
+                @Html.DisplayNameFor(model => model.First().Price)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 各商品を行として表示 -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <!-- 商品の名前を表示するセル -->
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <!-- 商品の価格を表示するセル -->
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
