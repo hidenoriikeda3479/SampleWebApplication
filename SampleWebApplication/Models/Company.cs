@@ -14,6 +14,7 @@ namespace SampleWebApplication.Models
         /// </summary>
         [Key]
         [Column("company_id")]
+        [Display(Name = "会社ID")]
         public int CompanyId { get; set; }
 
         /// <summary>
@@ -22,6 +23,7 @@ namespace SampleWebApplication.Models
         [Required]
         [MaxLength(100)]
         [Column("name")]
+        [Display(Name ="会社名")]
         public string Name { get; set; } = default!;
     }
 }
